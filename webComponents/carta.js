@@ -20,7 +20,7 @@ class Carta extends HTMLElement {
     }
 
     cargarPlatos() {
-        // Platos de ejemplo clasificados por categorías
+       
         const platos = [
             { nombre: "Arroz con leche", imagen: "./img/arrozLeche.jpg", precio: 6, alergenos: ["gluten", "lactosa"], categoria: "postre" },
             { nombre: "Butifarra con judías", imagen: "./img/butifarraMogetes.jpg", precio: 15, alergenos: ["gluten"], categoria: "segundo" },
@@ -35,10 +35,11 @@ class Carta extends HTMLElement {
 
         const platosContainer = this.querySelector("#platos-container");
 
-        // Filtrar platos por categorías y mostrar en secciones separadas
+        
         const categorias = ["primero", "segundo", "postre", "bebida"];
         categorias.forEach(categoria => {
             const categoriaPlatos = platos.filter(plato => plato.categoria === categoria);
+
             if (categoriaPlatos.length > 0) {
                 const categoriaHeader = document.createElement("h3");
                 categoriaHeader.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
@@ -52,7 +53,7 @@ class Carta extends HTMLElement {
 
                 categoriaPlatos.forEach(plato => {
                     const col = document.createElement("div");
-                    col.classList.add("col-md-4"); // Cada plato ocupará 6 columnas en pantallas medianas y superiores
+                    col.classList.add("col-md-4"); 
                     const platoElement = document.createElement("div");
                     platoElement.classList.add("plato");
                     platoElement.classList.add("card");
