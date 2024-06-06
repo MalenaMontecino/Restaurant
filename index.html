@@ -78,6 +78,7 @@
         const pedido = document.querySelector('pedido-component');
 
         carta.addEventListener('platoSeleccionado', (event) => {
+            //cuando se detecta el evento
             const plato = event.detail;
             pedido.agregarPlato(plato);
         });

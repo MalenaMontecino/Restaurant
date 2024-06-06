@@ -1,9 +1,10 @@
 class Pedido extends HTMLElement {
+    //inicializa  y define array vacía
     constructor() {
         super();
         this.pedido = [];
     }
-
+    //ejecuta cuando el componente e agrega al DOm
     connectedCallback() {
         this.render();
         this.addEventListener("platoSeleccionado", (event) => {
@@ -33,13 +34,7 @@ class Pedido extends HTMLElement {
         this.renderPedido();
     }
 
-    actualizarCantidad(index, nuevaCantidad) {
-        if (nuevaCantidad < 1) {
-            nuevaCantidad = 1;
-        }
-        this.pedido[index].cantidad = nuevaCantidad;
-        this.renderPedido();
-    }
+  
 
     incrementarCantidad(index) {
         this.pedido[index].cantidad += 1;
@@ -88,15 +83,11 @@ class Pedido extends HTMLElement {
                 const index = event.target.dataset.index;
                 this.incrementarCantidad(index);
             });
-            platoElement.querySelector(".cantidad").addEventListener("change", (event) => {
-                const index = event.target.dataset.index;
-                const nuevaCantidad = parseInt(event.target.value, 10);
-                this.actualizarCantidad(index, nuevaCantidad);
-            });
+         
             pedidoContainer.appendChild(platoElement);
         });
         this.querySelector("#total").textContent = total;
     }
 }
-
+//registrar nuevo elemento y asocia con la clase
 customElements.define('pedido-component', Pedido);

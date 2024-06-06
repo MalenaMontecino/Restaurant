@@ -1,9 +1,11 @@
 class Carta extends HTMLElement {
+    //inicializar el elemento
     constructor() {
         super();
     }
 
     connectedCallback() {
+         //se invoca cada vez que el elemento es agreado al DOM
         this.render();
     }
 
@@ -38,10 +40,12 @@ class Carta extends HTMLElement {
         
         const categorias = ["primero", "segundo", "postre", "bebida"];
         categorias.forEach(categoria => {
+            //filtrar pr categoria
             const categoriaPlatos = platos.filter(plato => plato.categoria === categoria);
 
             if (categoriaPlatos.length > 0) {
                 const categoriaHeader = document.createElement("h3");
+                //titulo categoria
                 categoriaHeader.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
                 categoriaHeader.style.display ="flex";
                 categoriaHeader.style.justifyContent ="center";
@@ -50,7 +54,7 @@ class Carta extends HTMLElement {
                 const row = document.createElement("div");
                 row.classList.add("row");
                 platosContainer.appendChild(row);
-
+                //cada card de cada plato
                 categoriaPlatos.forEach(plato => {
                     const col = document.createElement("div");
                     col.classList.add("col-md-4"); 
@@ -67,6 +71,7 @@ class Carta extends HTMLElement {
                         </div>
                     `;
                     platoElement.querySelector(".add-to-order").addEventListener("click", () => {
+                        //evento con los datos del plato
                         this.dispatchEvent(new CustomEvent("platoSeleccionado", { detail: plato }));
                     });
                     col.appendChild(platoElement);
@@ -76,5 +81,5 @@ class Carta extends HTMLElement {
         });
     }
 }
-
+//registrar nuevo elemento y asocia con la clase
 customElements.define('carta-component', Carta);

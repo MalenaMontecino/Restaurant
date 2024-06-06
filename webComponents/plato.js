@@ -1,10 +1,12 @@
 // plato.js
 class Plato extends HTMLElement {
+    //inicializar el elemento
     constructor() {
         super();
     }
-
+    //se invoca cada vez que el elemento es agreado al DOM
     connectedCallback() {
+        //actualizar el contenido del elemento
         this.render();
     }
 
@@ -19,5 +21,5 @@ class Plato extends HTMLElement {
         `;
     }
 }
-
+//registrar nuevo elemento y asocia con la clase
 customElements.define('plato-component', Plato);
